@@ -1,0 +1,29 @@
+{
+    "name": "jefponte/asptest",
+    "description": "Test for Alter Solutions",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Jefferson Ponte"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "ASPTest\\": "src/"
+        }
+    },
+    "require": {
+        "symfony/console": "~4.0",
+        "php": ">=7.2"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^0.11.3",
+        "codeception/codeception": "^2.5"
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "extra": {
+        "symfony-bin-dir": "bin"
+    }
+}
