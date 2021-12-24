@@ -1,6 +1,5 @@
 <?php
 /**
- * Classe feita para manipulação do objeto UserDAO
  * @author Jefferson Uchôa Ponte
  */
 

@@ -2,9 +2,8 @@
 
 namespace ASPTest;
 
-use ASPTest\dao\ASPTestUserDAO;
+
 use ASPTest\dao\UserDAO;
-use ASPTest\model\ASPTestUser;
 use ASPTest\model\User;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -49,12 +48,12 @@ class UserCreate extends Command
             $output->writeln("Type a last name shorter than 35");
             return;
         }
-        if ($age < 2) {
-            $output->writeln("Age must be between 2 and 35");
+        if ($age <= 0) {
+            $output->writeln("Age must be between 0 and 35");
             return;
         }
         if ($age > 150) {
-            $output->writeln("Age must be between 2 and 35");
+            $output->writeln("Age must be between 0 and 35");
             return;
         }
         

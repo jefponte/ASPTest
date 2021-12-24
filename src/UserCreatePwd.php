@@ -15,40 +15,44 @@ class UserCreatePwd extends Command
 
     protected function configure()
     {
-        $this->setDescription("Cria uma senha para um usuário.")
-            ->addArgument('id', InputArgument::OPTIONAL, "User's id")
-            ->setHelp("Criar uma senha para um usuário");
+        $this->setDescription("Update password.")
+        ->addArgument('id', InputArgument::REQUIRED, "User's id")
+        ->addArgument('password', InputArgument::REQUIRED, "User's password")
+        ->addArgument('retypePassword', InputArgument::REQUIRED, "User's retype password")
+            ->setHelp("Update password");
 
     }
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->edit();
-        $output->writeln("Senha alterada com sucesso!");
-    }
-
-
-
-    public function edit()
-    {
-        $id = 1;
-        $password = "Teste";
-        $password = password_hash($password, PASSWORD_BCRYPT, 
-        array('cost' => 10));
-        
-
+        $id = intval($input->getArgument('id'));
         $selected = new User();
         $selected->setId($id);
         $userDao = new UserDAO();
         if(!$userDao->fillById($selected)){
-            return false;
+            $output->writeln("User not found");
+            return;
         }
+        
+        $password = $input->getArgument('password');
+        $retypePassword = $input->getArgument('retypePassword');
 
+        if($password != $retypePassword){
+            $output->writeln("Enter two same passwords");
+            return;
+        }
+        if(strlen($password) < 6){
+            $output->writeln("Password must be at least 6 characters long.");
+            return;
+        }
+        $password = password_hash($password, PASSWORD_BCRYPT, 
+        array('cost' => 10));
         $selected->setPassword($password);
-
         if ($userDao->update($selected)) {
-            return true;
+            $output->writeln("Password update sucess.");
+            return;
         } else {
-            return false;
+            $output->writeln("DB fail.");
+            return;
         }
     }
 }

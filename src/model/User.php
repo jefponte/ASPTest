@@ -1,7 +1,6 @@
 <?php
             
 /**
- * Classe feita para manipulação do objeto User
  * @author Jefferson Uchôa Ponte <jefponte@gmail.com>
  */
 
