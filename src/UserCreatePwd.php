@@ -24,7 +24,6 @@ class UserCreatePwd extends Command
     {
         $this->edit();
         $output->writeln("Senha alterada com sucesso!");
-        return Command::SUCCESS;
     }
 
 

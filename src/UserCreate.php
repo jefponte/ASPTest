@@ -44,10 +44,8 @@ class UserCreate extends Command
                 'age' => $user->getAge()
             ));
             $output->writeln(json_encode($user));
-            return Command::SUCCESS;
         } else {
             $output->writeln("Database Error");
-            return Command::FAILURE;
         }
     }
 }
