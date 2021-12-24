@@ -24,8 +24,10 @@ $ docker-compose exec console bin/console user:list
 ```
 
 ### Tests
+```
 $ docker-compose exec console bin/console user:create Jefferson Ponte jefponte@gmail.com 32
 $ docker-compose exec console bin/console user:create Jackson Ponte jackponte@gmail.com 31
 $ docker-compose exec console bin/console user:create Jessica Ponte jessicaponte@gmail.com 29
 $ docker-compose exec console bin/console user:list
 $ docker-compose exec console bin/console user:create-pwd  1 ttAA123$p
+```
