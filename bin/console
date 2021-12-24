@@ -9,9 +9,11 @@ use Symfony\Component\Console\Application;
 use ASPTest\TestCommand;
 use ASPTest\UserCreate;
 use ASPTest\UserCreatePwd;
+use ASPTest\UserList;
 
 $application = new Application();
 $application->add(new TestCommand());
 $application->add(new UserCreate());
 $application->add(new UserCreatePwd());
+$application->add(new UserList());
 $application->run();

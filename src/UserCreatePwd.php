@@ -44,6 +44,19 @@ class UserCreatePwd extends Command
             $output->writeln("Password must be at least 6 characters long.");
             return;
         }
+        if (preg_match('/^[a-zA-Z0-9]+$/', $password)){
+            $output->writeln("Must have a special character in the password.");
+            return;
+        }
+        if(!preg_match('/\d+/', $password)>0){
+            $output->writeln("Must have 1 number");
+            return;
+        }
+        if(!preg_match('/\p{Lu}/u', $password)){
+            $output->writeln("Must have a capital letter");
+            return;
+        }
+
         $password = password_hash($password, PASSWORD_BCRYPT, 
         array('cost' => 10));
         $selected->setPassword($password);
