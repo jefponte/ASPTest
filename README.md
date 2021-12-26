@@ -1,6 +1,6 @@
 # Desafio PHP - ASPTest
 
-Using SQLite database and Symfony console commands to be used within Docker containers
+Using SQLite database and Symfony console commands to be used within Docker.
 
 ## Requirements
 
