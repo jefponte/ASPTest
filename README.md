@@ -10,7 +10,7 @@ Using SQLite database and Symfony console commands to be used within Docker cont
 
 ```
 $ docker build -t asptest .
-$ docker run --name asptest asptest
+$ docker run -d --name asptest asptest
 ```
 ## Run commands
 ```
