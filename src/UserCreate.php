@@ -53,7 +53,7 @@ class UserCreate extends Command
             return;
         }
         if ($age > 150) {
-            $output->writeln("Age must be between 0 and 35");
+            $output->writeln("Age must be between 0 and 150");
             return;
         }
         
