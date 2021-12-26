@@ -48,15 +48,18 @@ class UserCreate extends Command
             $output->writeln("Type a last name shorter than 35");
             return;
         }
-        if ($age <= 0) {
-            $output->writeln("Age must be between 0 and 35");
-            return;
+        if ($age != null) {
+            if ($age <= 0) {
+                $output->writeln("Age must be between 0 and 35");
+                return;
+            }
+            if ($age > 150) {
+                $output->writeln("Age must be between 0 and 150");
+                return;
+            }
         }
-        if ($age > 150) {
-            $output->writeln("Age must be between 0 and 150");
-            return;
-        }
-        
+
+
         if (!$this->validaEmail($email)) {
             $output->writeln("Type a valid mail");
             return;
@@ -90,9 +93,9 @@ class UserCreate extends Command
         $domino = "[a-zA-Z0-9\._-]+.";
         $extensao = "([a-zA-Z]{2,4})$";
 
-        if(preg_match("/^([[:alnum:]_.-]){3,}@([[:lower:][:digit:]_.-]{3,})(.[[:lower:]]{2,3})(.[[:lower:]]{2})?$/", $email)) {
+        if (preg_match("/^([[:alnum:]_.-]){3,}@([[:lower:][:digit:]_.-]{3,})(.[[:lower:]]{2,3})(.[[:lower:]]{2})?$/", $email)) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
