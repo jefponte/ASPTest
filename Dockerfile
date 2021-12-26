@@ -1,9 +1,14 @@
-FROM  php:7.3-cli
-RUN apt-get update \
-    && apt-get install -y git zip \
-    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-WORKDIR /app
-ADD ./ .
-RUN php /usr/local/bin/composer install
+FROM php:7.3-cli
 
-CMD ["php", "-a"]
+RUN apt-get update -y && apt-get install -y libmcrypt-dev wget git unzip
+
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN docker-php-ext-install pdo mbstring
+
+WORKDIR /app
+COPY . /app
+RUN wget https://get.symfony.com/cli/installer -O - | bash
+RUN mv /root/.symfony/bin/symfony /usr/local/bin/symfony
+RUN composer install
+
+CMD symfony serve
